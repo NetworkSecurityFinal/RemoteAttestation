@@ -1,18 +1,6 @@
 package Enclave;
 
 public class enclave {
-	
-	//What is stored secretly in the enclave
-	
-	private Runnable program;
-	//hash of stack, heap, thread, etc.
-	//unique identifier of the enclave
-	private int MREnclave;
-	//this is provided by an authority that signs the enclave
-	//hash of the rsa public key of the software vendor
-	private int MRSigner;
-	//author identity
-	
 	//enclave ID
 	private int eid;
 	

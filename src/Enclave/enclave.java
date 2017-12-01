@@ -1,8 +1,9 @@
 package Enclave;
 
 public class Enclave {
-	//enclave ID
+	
 	private int eid;
+	private String FileName;
 	
 	
 	//This creates our enclave
@@ -19,14 +20,7 @@ public class Enclave {
 	 */
 	public Enclave(String enclaveFileName, int enclaveID, CreationToken t)
 	{
-		//		@param Input ENCLAVE_FILE is the signed enclave file, defined above.
-		//		@param Input SGX_DEBUG_FLAG is set to 1 if the enclave is to be launched in debug mode else it is set to 0
-		//
-		//		*/
-		//ret = sgx_create_enclave(ENCLAVE_FILE, SGX_DEBUG_FLAG, &token, &updated, &eid, NULL);
-		//the launch token has some data used to create the enclave type
-		//we can give it a zero, and it will try to update itself
-		//
+		//We need to verify 
 		eid = enclaveID;
 	}
 }

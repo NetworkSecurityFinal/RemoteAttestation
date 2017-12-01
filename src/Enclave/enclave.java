@@ -20,7 +20,9 @@ public class Enclave {
 	 */
 	public Enclave(String enclaveFileName, int enclaveID, CreationToken t)
 	{
-		//We need to verify 
+		//We need to verify the enclave file signature here
+		//How do keys work? Do we create a new private enclave key here, or do accept one
+		
 		eid = enclaveID;
 	}
 }

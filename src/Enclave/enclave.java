@@ -1,6 +1,6 @@
 package Enclave;
 
-public class enclave {
+public class Enclave {
 	//enclave ID
 	private int eid;
 	
@@ -17,7 +17,7 @@ public class enclave {
 	 * @param t token with startup details for the enclave
 	 * 
 	 */
-	public enclave(String enclaveFileName, int enclaveID, CreationToken t)
+	public Enclave(String enclaveFileName, int enclaveID, CreationToken t)
 	{
 		//		@param Input ENCLAVE_FILE is the signed enclave file, defined above.
 		//		@param Input SGX_DEBUG_FLAG is set to 1 if the enclave is to be launched in debug mode else it is set to 0

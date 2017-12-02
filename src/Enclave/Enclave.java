@@ -87,7 +87,8 @@ public class Enclave {
 		} catch (InvalidKeyException e) {
 			System.out.println(e.getMessage());
 		}
-		return new byte[16];
+		
+		return (DHPublicKey)dhKeyPair.getPublic();
 	}
 	
 	/**

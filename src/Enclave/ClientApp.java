@@ -1,4 +1,4 @@
-package Enclave;
+package enclave;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -33,8 +33,6 @@ public class ClientApp {
 			int responseCode = con.getResponseCode();
 			System.out.println("\nSending 'GET' request to URL");
 			System.out.println("Response Code : " + responseCode);
-			
-			con.connect();
 			
 			BufferedReader in = new BufferedReader(
 			        new InputStreamReader(con.getInputStream()));

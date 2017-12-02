@@ -1,4 +1,6 @@
-package Enclave;
+package enclave;
+
+import java.security.PublicKey;
 
 /*
  * This class is a wrapper for the enclave, to make the calls easier for the client
@@ -10,12 +12,26 @@ public class EnclaveManagement {
 	public EnclaveManagement() {
 		enclave = new Enclave("testfile.txt", -1);
 	}
+	
+	/**
+	 * Creates a Message 0 object to respond to the Service Provider's challenge
+	 * @return a Message 0 object
+	 */
+	public Message0 getMessage0(PublicKey spPubKey)
+	{
+		byte[] key = enclave.sgx_ra_init(spPubKey);
+		return new Message0();
+	}
 
+	/**
+	 * Retrieves the enclave object
+	 * @return enclave
+	 */
 	public Enclave getEnclave() {
 		return enclave;
 	}
 
-	/*
+	/**
 	 * A function that reads the sealed data from a file named "SealedSecret.bin"
 	 * 
 	 * @param - output: if the file exists, the size of the file is compared with
@@ -26,7 +42,7 @@ public class EnclaveManagement {
 		return false;
 	}
 
-	/*
+	/**
 	 * A function that writes the sealed data to a file for later use
 	 * 
 	 * @param - output: sealedData byte array is written to a file named
@@ -36,8 +52,8 @@ public class EnclaveManagement {
 
 	}
 
-	/*
-	 * A wrapper function to encyrpt and decrypt the provided data buffer depending
+	/**
+	 * A wrapper function to encrypt and decrypt the provided data buffer depending
 	 * on the validity of the secret at that point of time
 	 * 
 	 * @param - input : data buffer, buf of string type
@@ -51,20 +67,20 @@ public class EnclaveManagement {
 		return false;
 	}
 
-	/*
+	/**
 	 * An API that deletes the sealed secret file
 	 */
 	void RemoveFile() {
 	}
 
-	/*
+	/**
 	 * An API that destroys the enclave if the enclave_id is 0. It is a better
 	 * practice to destroy an enclave when not in use
 	 */
 	void DestroyEnclave() {
 	}
 
-	/*
+	/**
 	 * An API that creates an enclave If the enclave_id is not 0, it means an
 	 * enclave already exists and so the API does nothing, just returns; otherwise
 	 * checks the device status using sgx_device_status. If sgx is enabled, creates
@@ -74,7 +90,7 @@ public class EnclaveManagement {
 	void CreateEnclave() {
 	}
 
-	/*
+	/**
 	 * An API that encrypts and decrypts the given data buffer
 	 * 
 	 * @param -input: buffer of string type. This buffer will be encrypted with the

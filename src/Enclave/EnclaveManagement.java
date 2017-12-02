@@ -1,4 +1,4 @@
-package Enclave;
+package enclave;
 
 /*
  * This class is a wrapper for the enclave, to make the calls easier for the client

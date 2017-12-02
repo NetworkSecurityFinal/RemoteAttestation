@@ -1,5 +1,6 @@
-package Enclave;
+package enclave;
 
+import java.math.BigInteger;
 import java.security.*;
 import javax.crypto.spec.*;
 
@@ -8,7 +9,7 @@ public class Enclave {
 	private int eid;
 	private String FileName;
 	private PublicKey spPublicKey;
-	private DHParameterSpec kpg;
+	private static DHParameterSpec paramSpec;
 
 	static byte[] sealing_key = new byte[16];
 	static byte[] provisioning_key = new byte[16];
@@ -17,23 +18,12 @@ public class Enclave {
 		SecureRandom sr = new SecureRandom();
 		sr.nextBytes(provisioning_key);
 		sr.nextBytes(sealing_key);
+		
+		paramSpec = new DHParameterSpec(new BigInteger("47"), new BigInteger("71"));
 	}
-	// This creates our enclave
-	// needs a launch token, enclave file, eid, u
-	// enclave file name is the file name to the enclave image
-	// launch token is data used for launching
-	// updated is if the launch token got updates
 
 	/**
 	 * Creates a new enclave
-	 * 
-	 * @param enclaveFileName
-	 *            the signed enclave file, with the enclave image
-	 * @param enclaveID
-	 *            used as a handle for the enclave by other functions
-	 * @param t
-	 *            token with startup details for the enclave
-	 * 
 	 */
 	public Enclave(String enclaveFileName, int enclaveID) {
 		// Make the choice to not load enclave file

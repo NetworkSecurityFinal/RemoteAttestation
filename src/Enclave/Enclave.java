@@ -69,7 +69,7 @@ public class Enclave {
 	 * @param spPubKey The service provider's public key
 	 * @return the public Diffie Hellman key
 	 */
-	public byte[] sgx_ra_init(PublicKey spPubKey)
+	public DHPublicKey sgx_ra_init(PublicKey spPubKey)
 	{	
 		try {
 			spPublicKey = spPubKey;
@@ -79,8 +79,7 @@ public class Enclave {
 			dhKeyAgree = KeyAgreement.getInstance("DiffieHellman");
 			dhKeyAgree.init(dhKeyPair.getPrivate());
 			
-			byte[] dhPubKeyBytes = ((DHPublicKey) dhKeyPair.getPublic()).getY().toByteArray();
-			return dhPubKeyBytes;
+			return (DHPublicKey) dhKeyPair.getPublic();
 		} catch (NoSuchAlgorithmException e) {
 			System.out.println(e.getMessage());
 		} catch (InvalidAlgorithmParameterException e) {

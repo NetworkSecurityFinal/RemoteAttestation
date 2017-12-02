@@ -19,7 +19,8 @@ public class EnclaveManagement {
 	 */
 	public Message0 getMessage0(PublicKey spPubKey)
 	{
-		byte[] enclave.sgx_ra_init(spPubKey);
+		byte[] key = enclave.sgx_ra_init(spPubKey);
+		return new Message0();
 	}
 
 	/**
